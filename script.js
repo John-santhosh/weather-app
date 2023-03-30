@@ -23,8 +23,7 @@ async function fetchApi() {
   }
   try {
     const response = await fetch(
-      `https://open-weather13.p.rapidapi.com/city/${value}`,
-      options
+      `http://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=9701e05bdc450703a5af1448835dd149`
     );
     const data = await response.json();
     //from displayTemperature function
@@ -42,7 +41,7 @@ function displayTemperature(obj) {
   $("#city-name").text(obj.name);
   $("#weather-type").text(obj.weather[0].main);
   $("#weather-icon").attr("src", weatherImg);
-  $("#temp").text(obj.main.temp);
-  $("#min-temp").text(obj.name);
-  $("#max-temp").text(obj.main.temp_min);
+  $("#temp").text((obj.main.temp - 273.15).toFixed(2));
+  $("#min-temp").text((obj.main.temp_max - 273.15).toFixed(2));
+  $("#max-temp").text((obj.main.temp_min - 273.15).toFixed(2));
 }
