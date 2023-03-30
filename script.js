@@ -23,7 +23,7 @@ async function fetchApi() {
   }
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=9701e05bdc450703a5af1448835dd149`
+      `https://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=9701e05bdc450703a5af1448835dd149`
     );
     const data = await response.json();
     //from displayTemperature function
